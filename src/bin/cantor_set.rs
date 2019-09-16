@@ -27,7 +27,6 @@ where G: Graphics {
         params.transform,
         params.graphics
     );
-    
 }
 
 
@@ -48,17 +47,20 @@ fn main() {
             [WIDTH, HEIGHT]
         ).exit_on_esc(true).build().unwrap();
     while let Some(event) = window.next() {
-        window.draw_2d(&event, |context, graphics, _device| {
-            clear([0.0; 4], graphics);
-            let mut params = Params {
-                linesep: LINESEP,
-                linewidth: LINEWIDTH,
-                linecolor: LINECOLOR,
-                transform: context.transform,
-                graphics: graphics
-            };
-            draw_cantor_set(0.0, 0.0, WIDTH, LEVEL, &mut params);
-        });
+        window.draw_2d(
+            &event,
+            |context, graphics, _device| {
+                clear([0.0; 4], graphics);
+                let mut params = Params {
+                    linesep: LINESEP,
+                    linewidth: LINEWIDTH,
+                    linecolor: LINECOLOR,
+                    transform: context.transform,
+                    graphics: graphics
+                };
+                draw_cantor_set(0.0, 0.0, WIDTH, LEVEL, &mut params);
+            }
+        );
     }
 }
 

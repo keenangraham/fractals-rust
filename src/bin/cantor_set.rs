@@ -4,14 +4,17 @@ use piston_window::*;
 const WIDTH: f64 = 1500.0;
 const HEIGHT: f64 = 1000.0;
 const LEVEL: u32 = 10;
-const COLOR: [f32; 4] = [168.0 / 255.0, 177.0 / 255.0, 245.0 / 255.0, 1.0];
+const LINECOLOR: [f32; 4] = [168.0 / 255.0, 177.0 / 255.0, 245.0 / 255.0, 1.0];
+const LINEWIDTH: f64 = 30.0;
+const LINESEP: f64 = 100.0;
 
-// Make line struct and add draw method.
+// TODO: Make line struct and add draw method.
 
 struct Params<'a, G: 'a>
 where G: Graphics {
     linesep: f64,
     linewidth: f64,
+    linecolor: [f32; 4],
     transform: [[f64; 3]; 2],
     graphics: &'a mut G
 }
@@ -20,7 +23,7 @@ where G: Graphics {
 fn draw_line<G>(x: f64, y: f64, length: f64, params: &mut Params<G>)
 where G: Graphics {
     line(
-        COLOR,
+        params.linecolor,
         params.linewidth,
         [x, y, x + length, y],
         params.transform,
@@ -50,8 +53,9 @@ fn main() {
         window.draw_2d(&event, |context, graphics, _device| {
             clear([0.0; 4], graphics);
             let mut params = Params {
-                linesep: 100.0,
-                linewidth: 30.0,
+                linesep: LINESEP,
+                linewidth: LINEWIDTH,
+                linecolor: LINECOLOR,
                 transform: context.transform,
                 graphics: graphics
             };

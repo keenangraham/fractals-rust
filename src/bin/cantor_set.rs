@@ -1,6 +1,5 @@
 use piston_window::*;
 
-
 const WIDTH: f64 = 1500.0;
 const HEIGHT: f64 = 1000.0;
 const LEVEL: u32 = 10;
@@ -8,7 +7,6 @@ const LINECOLOR: [f32; 4] = [168.0 / 255.0, 177.0 / 255.0, 245.0 / 255.0, 1.0];
 const LINEWIDTH: f64 = 30.0;
 const LINESEP: f64 = 100.0;
 
-// TODO: Make line struct and add draw method.
 
 struct Params<'a, G: 'a>
 where G: Graphics {
@@ -63,3 +61,6 @@ fn main() {
         });
     }
 }
+
+
+// TODO: Make line struct and add draw method.
